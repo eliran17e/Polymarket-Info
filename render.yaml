@@ -1,0 +1,21 @@
+# Render Blueprint for the backend (FastAPI + poller). In Render: New → Blueprint,
+# point it at this repo, and fill in the secret values it prompts for.
+services:
+  - type: web
+    name: polymarket-info-api
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL       # Neon connection string (postgresql+psycopg://…)
+        sync: false
+      - key: GEMINI_API_KEY     # your Gemini key
+        sync: false
+      - key: GNEWS_API_KEY      # optional (real news photos); leave blank to skip
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-flash-lite-latest
+      - key: ALLOWED_ORIGINS    # set to your Vercel URL later; "*" is fine to start
+        value: "*"
