@@ -1,0 +1,17 @@
+# Which Polymarket events the poller follows.
+# Edit this file to add/remove markets — no code changes needed.
+#
+# slug = the part after /event/ in a Polymarket URL.
+# Reminder: Gamma has no reliable free-text search, so we track by slug (or tag_id).
+
+slugs:
+  # Live event — prices move, good for watching snapshots accumulate.
+  - fed-decision-in-july-181
+  # Resolved event — static, kept for testing the Phase 3 explainer on real resolution text.
+  - fed-decision-in-october
+  # Multi-candidate political event — exercises the screener's consistency check.
+  - who-will-be-the-next-prime-minister-of-israel-after-the-next-election
+
+# Optional: follow whole categories by tag id (GET /tags to discover ids).
+# tag_ids:
+#   - 100328

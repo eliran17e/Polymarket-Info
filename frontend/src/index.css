@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: theme("colors.page");
+  color: theme("colors.ink.900");
+  font-family: theme("fontFamily.sans");
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Tabular, lining figures so probabilities and volumes align in columns. */
+.tnum {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* Glossary terms: dotted underline + a plain-English tooltip on hover/focus. */
+.term {
+  text-decoration: underline dotted theme("colors.ink.400");
+  text-underline-offset: 3px;
+  cursor: help;
+  position: relative;
+}
+.term:hover::after,
+.term:focus-visible::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 40;
+  width: max-content;
+  max-width: 240px;
+  white-space: normal;
+  border-radius: 6px;
+  background: theme("colors.ink.900");
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #fff;
+  text-align: left;
+}
+
+/* Brief highlight when a live price changes. */
+@keyframes row-flash {
+  from {
+    background-color: theme("colors.accent.soft");
+  }
+  to {
+    background-color: transparent;
+  }
+}
+.row-flash {
+  animation: row-flash 1.4s ease-out;
+}
