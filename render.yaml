@@ -4,6 +4,7 @@ services:
   - type: web
     name: polymarket-info-api
     runtime: docker
+    region: frankfurt        # match your Neon DB region so queries stay fast
     rootDir: backend
     dockerfilePath: ./Dockerfile
     plan: free
